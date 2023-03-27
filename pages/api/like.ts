@@ -24,7 +24,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     });
 
     if (!post) {
-      throw new Error('Invalid ID');
+      throw new Error('not nvalid ID');
     }
 
     let updatedLikedIds = [...(post.likedIds || [])];
@@ -32,7 +32,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     if (req.method === 'POST') {
       updatedLikedIds.push(currentUser.id);
       
-      // NOTIFICATION PART START
+      // NOTIFICATION PART begin
       try {
         const post = await prisma.post.findUnique({
           where: {
